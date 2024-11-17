@@ -48,10 +48,10 @@ The regression analysis of both datasets showed clear trends:
 In addition to price trends, trading volume was also examined. The price and volume graphs revealed a pattern where periods of high volume corresponded with higher volatility in price movements. This insight could be useful for future strategies, but the current analysis does not incorporate volume directly into the trading strategy. 
 
 Graphs for both datasets were saved as:
-- *WinningData_Price_Volume.png*
-- *LosingData_Price_Volume.png*
-- *LosingData_Price_Over_Time_with_Regression.png*
-- *WinningData_Price_Over_Time_with_Regression.png*
+- ![WinningData Price and Volume](./WinningData_Price_Volume.png)
+- ![LosingData Price and Volume](./LosingData_Price_Volume.png)
+- ![LosingData Price Over Time with Regression](./LosingData_Price_Over_Time_with_Regression.png)
+- ![WinningData Price Over Time with Regression](./WinningData_Price_Over_Time_with_Regression.png)
 
 These visualizations show the relationship between price and volume, providing additional context for understanding market behavior during these periods.
 
@@ -105,23 +105,23 @@ After executing the backtest strategy, the next step was to analyze the generate
 1. **Frequency of Trades**:
     - **Histogram of Iterations Since Trade**: The histogram reveals that the majority of trades occurred within **10 minutes** of each other, with most trades being executed very frequently. This suggests that the moving average strategy is overly sensitive, triggering buy and sell signals too often. Given that we lost money over time, this could indicate that the strategy may be trading too frequently, capturing only small price fluctuations, and ultimately resulting in negative returns.
 
-    ![Iterations Since Trade](Crypto_Forex_Market_Analysis/Graphs/sma_LosingData_trade_log_iterations_histogram.png)
+    ![Iterations Since Trade](./sma_LosingData_trade_log_iterations_histogram.png)
 
 2. **Portfolio Value Over Time**:
     - **Simulated Portfolio Value**: Both the **WinningData** and **LosingData** portfolio value graphs showed a **decline** in portfolio value over time, reinforcing the idea that the strategy is not profitable under the given conditions. The **LosingData** dataset still had some residual value left at the end, while the **WinningData** dataset lost all its value, suggesting that this strategy may have performed marginally better during periods of downward price movement. However, the general trend indicates that the strategy is overall unprofitable, which was expected given the simplicity of the approach.
 
-    ![Portfolio Value](Crypto_Forex_Market_Analysis/Graphs/sma_LosingData_trade_log_portfolio_value.png)
+    ![Portfolio Value](./sma_LosingData_trade_log_portfolio_value.png)
 
 3. **Reasons for Trades**:
     - **Reasons and Portfolio Changes**: The **reason for trade** analysis confirmed that the **Moving Averages Indicator** was the only condition triggering buy and sell actions, with no stop-loss triggers occurring. The strategy was entirely driven by the moving average crossing signals, which means that the stop-loss feature was not needed because no prices ever dropped enough to activate the stop-loss condition.
 
     - The **average portfolio change by trade reason** showed a **100% gain** for buy trades, and a **-50% loss** for sell trades, which is a direct result of the trading logic: when a buy occurs, it is followed by a sell that tends to be significantly lower, often causing a large drop in portfolio value.
 
-    ![Reason vs. Portfolio Change](Crypto_Forex_Market_Analysis/Graphs/sma_LosingData_trade_log_reason_vs_change.png)
+    ![Reason vs. Portfolio Change](./sma_LosingData_trade_log_reason_vs_change.png)
 
     - **Counts of Trades by Reason**: The count of trades shows that **66840 buy** trades and **66840 sell** trades were executed, suggesting that every buy signal was followed by a sell signal, but no stop-loss condition was triggered.
 
-    ![Reason Counts](Crypto_Forex_Market_Analysis/Graphs/sma_LosingData_trade_log_reason_counts.png)
+    ![Reason Counts](./sma_LosingData_trade_log_reason_counts.png)
 
 4. **Limitations and Insights**:
     - **Overfitting and Data Issues**: Given the small scale and basic nature of the strategy, it's important to note that this is primarily a **proof of concept**. The data used for segmentation was manually eyeballed, which could introduce significant biases. Additionally, this backtest only used the **Simple Moving Average (SMA)** and did not incorporate other potentially useful indicators, such as volume or momentum-based indicators.
@@ -179,4 +179,3 @@ While this portion of the project serves as a proof of concept, it has already l
 ---
 
 This project has been a valuable exercise in developing algorithmic trading strategies, and the lessons learned will continue to shape future iterations. As the model evolves, it will increasingly rely on more sophisticated techniques and real-time adjustments to adapt to the unpredictable nature of financial markets.
-
