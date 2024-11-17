@@ -48,10 +48,10 @@ The regression analysis of both datasets showed clear trends:
 In addition to price trends, trading volume was also examined. The price and volume graphs revealed a pattern where periods of high volume corresponded with higher volatility in price movements. This insight could be useful for future strategies, but the current analysis does not incorporate volume directly into the trading strategy. 
 
 Graphs for both datasets were saved as:
-- ![WinningData Price and Volume](./WinningData_Price_Volume.png)
-- ![LosingData Price and Volume](./LosingData_Price_Volume.png)
-- ![LosingData Price Over Time with Regression](./LosingData_Price_Over_Time_with_Regression.png)
-- ![WinningData Price Over Time with Regression](./WinningData_Price_Over_Time_with_Regression.png)
+- [WinningData Price and Volume](https://github.com/KyleMonroeClark/High-Volatility-Commodity-Trading-Strategies-Analysis/blob/main/Graphs/WinningData_Price_Volume.png)
+- [LosingData Price and Volume](https://github.com/KyleMonroeClark/High-Volatility-Commodity-Trading-Strategies-Analysis/blob/main/Graphs/LosingData_Price_Volume.png)
+- [LosingData Price Over Time with Regression](https://github.com/KyleMonroeClark/High-Volatility-Commodity-Trading-Strategies-Analysis/blob/main/Graphs/LosingData_Price_Over_Time_with_Regression.png)
+- [WinningData Price Over Time with Regression](https://github.com/KyleMonroeClark/High-Volatility-Commodity-Trading-Strategies-Analysis/blob/main/Graphs/WinningData_Price_Over_Time_with_Regression.png)
 
 These visualizations show the relationship between price and volume, providing additional context for understanding market behavior during these periods.
 
@@ -89,8 +89,8 @@ Additionally, this backtest does not consider trading **volume**, which can be a
 The backtesting process produced a **trade log** for each dataset, and we were able to evaluate the overall performance of the strategy. The final value of the portfolio was calculated after all trades were executed, and the strategy was able to demonstrate its potential for generating small, consistent returns. However, the results are highly dependent on the market conditions during the periods analyzed (the **WinningData** and **LosingData**), and future backtests will aim to include more diverse market conditions for better generalization.
 
 You can find the trade logs for each dataset saved as CSV files:
-- *WinningData_trade_log.csv*
-- *LosingData_trade_log.csv*
+- *[WinningData_trade_log.csv](https://github.com/KyleMonroeClark/High-Volatility-Commodity-Trading-Strategies-Analysis/blob/main/Trade%20Logs/WinningData_trade_log.csv)*
+- *[LosingData_trade_log.csv](https://github.com/KyleMonroeClark/High-Volatility-Commodity-Trading-Strategies-Analysis/blob/main/Trade%20Logs/LosingData_trade_log.csv)*
 
 These logs provide detailed information on each trade, which will help in evaluating the strategy's performance and making adjustments for future iterations.
 
@@ -105,23 +105,17 @@ After executing the backtest strategy, the next step was to analyze the generate
 1. **Frequency of Trades**:
     - **Histogram of Iterations Since Trade**: The histogram reveals that the majority of trades occurred within **10 minutes** of each other, with most trades being executed very frequently. This suggests that the moving average strategy is overly sensitive, triggering buy and sell signals too often. Given that we lost money over time, this could indicate that the strategy may be trading too frequently, capturing only small price fluctuations, and ultimately resulting in negative returns.
 
-    ![Iterations Since Trade](./sma_LosingData_trade_log_iterations_histogram.png)
+    ![Iterations Since Trade](https://github.com/KyleMonroeClark/High-Volatility-Commodity-Trading-Strategies-Analysis/blob/main/Graphs/sma_LosingData_trade_log_iterations_histogram.png)
 
 2. **Portfolio Value Over Time**:
-    - **Simulated Portfolio Value**: Both the **WinningData** and **LosingData** portfolio value graphs showed a **decline** in portfolio value over time, reinforcing the idea that the strategy is not profitable under the given conditions. The **LosingData** dataset still had some residual value left at the end, while the **WinningData** dataset lost all its value, suggesting that this strategy may have performed marginally better during periods of downward price movement. However, the general trend indicates that the strategy is overall unprofitable, which was expected given the simplicity of the approach.
-
-    ![Portfolio Value](./sma_LosingData_trade_log_portfolio_value.png)
+    - **Simulated Portfolio Value**: Both the **WinningData** and **LosingData** portfolio value graphs showed a **decline** in portfolio value over time, reinforcing the idea that the strategy is not profitable under the given conditions. The **LosingData** dataset still had some residual value left at the end, while the **WinningData** dataset lost all its value, suggesting that this strategy may have performed marginally better during periods of downward price movement—though this could also be due to issues with the data segmentation.
+    
+    ![Portfolio Value](https://github.com/KyleMonroeClark/High-Volatility-Commodity-Trading-Strategies-Analysis/blob/main/Graphs/sma_LosingData_trade_log_portfolio_value.png)
 
 3. **Reasons for Trades**:
-    - **Reasons and Portfolio Changes**: The **reason for trade** analysis confirmed that the **Moving Averages Indicator** was the only condition triggering buy and sell actions, with no stop-loss triggers occurring. The strategy was entirely driven by the moving average crossing signals, which means that the stop-loss feature was not needed because no prices ever dropped enough to activate the stop-loss condition.
-
-    - The **average portfolio change by trade reason** showed a **100% gain** for buy trades, and a **-50% loss** for sell trades, which is a direct result of the trading logic: when a buy occurs, it is followed by a sell that tends to be significantly lower, often causing a large drop in portfolio value.
-
-    ![Reason vs. Portfolio Change](./sma_LosingData_trade_log_reason_vs_change.png)
-
-    - **Counts of Trades by Reason**: The count of trades shows that **66840 buy** trades and **66840 sell** trades were executed, suggesting that every buy signal was followed by a sell signal, but no stop-loss condition was triggered.
-
-    ![Reason Counts](./sma_LosingData_trade_log_reason_counts.png)
+    - The strategy generated **69,884 buy signals** and **69,883 sell signals**, with each trade being followed closely by its opposite. Despite the large number of trades, the portfolio value consistently declined, suggesting that frequent, small moves (without proper risk management or additional indicators) led to poor performance overall.
+    
+    ![Reason Counts](https://github.com/KyleMonroeClark/High-Volatility-Commodity-Trading-Strategies-Analysis/blob/main/Graphs/sma_LosingData_trade_log_reason_counts.png)
 
 4. **Limitations and Insights**:
     - **Overfitting and Data Issues**: Given the small scale and basic nature of the strategy, it's important to note that this is primarily a **proof of concept**. The data used for segmentation was manually eyeballed, which could introduce significant biases. Additionally, this backtest only used the **Simple Moving Average (SMA)** and did not incorporate other potentially useful indicators, such as volume or momentum-based indicators.
